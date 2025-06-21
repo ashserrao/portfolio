@@ -14,20 +14,6 @@ const Home = () => {
           preserveAspectRatio="none"
         >
           <motion.path
-            d="M0,0 L100,0 L100,100 L0,100 Z"
-            fill="none"
-            stroke="#8cfcfb"
-            strokeWidth="0.2"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "linear",
-            }}
-          />
-          <motion.path
             d="M0,50 Q25,0 50,50 T100,50"
             fill="none"
             stroke="#67C7EB"
@@ -43,35 +29,50 @@ const Home = () => {
           />
         </svg>
       </div>
-      <div className="container mx-auto px-6 text-center relative z-10">
-        <motion.h1
-          className="text-5xl md:text-7xl font-bold mb-6 text-[#8cfcfb]"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          Ashtro Dev
-        </motion.h1>
-        <motion.p
-          className="text-xl md:text-2xl mb-12"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          Crafting the future of web experiences
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <a
-            href="#contact"
-            className="bg-[#6A0C0B] text-[#c2ccaa] px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#9c5450] transition-colors duration-300"
+      <div className="flex flex-wrap container justify-center text-center items-center mx-auto px-6 relative z-10">
+        {/* <div className="hidden mb-[-9%] md:block md:w-1/2 lg:w-1/2">
+          <img
+            src="./assets/sample potrait.png"
+            alt="Sample Portrait"
+            className="object-cover w-8/12 mx-auto"
+          />
+        </div> */}
+        <div className="sm:w-full md:w-1/2 lg:w-1/2">
+          <img
+            className="sm:-ml-2 md:-ml-4 lg:-ml-4"
+            src="./assets/logo no bg.png"
+          />
+          <motion.h1
+            className="text-center text-5xl md:text-7xl font-bold mb-6 text-[#FFFFFF]"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            Get in touch
-          </a>
-        </motion.div>
+            Ashtro Dev
+          </motion.h1>
+          <motion.p
+            className="text-xl md:text-2xl mb-12"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Based in India
+          </motion.p>
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <a
+              href="https://in.linkedin.com/in/anush-serrao-31440a16a"
+              target="_blank"
+              className="bg-[#6A0C0B] text-[#c2ccaa] px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#9c5450] transition-colors duration-300"
+            >
+              Get in touch
+            </a>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

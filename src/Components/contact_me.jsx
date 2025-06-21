@@ -42,11 +42,11 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-b from-[#6A0C0B] to-[#AA0505]"
+      className="py-20 bg-gradient-to-b from-[#FFFFFF] to-[#FFE6E6]"
     >
       <div className="container mx-auto px-6">
         <motion.h2
-          className="text-4xl font-bold mb-12 text-center text-[#8cfcfb]"
+          className="text-4xl font-bold mb-12 text-center text-[#000000]"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -61,7 +61,7 @@ const Contact = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="mb-6">
-            <label className="block mb-2 text-sm font-medium text-[#c2ccaa]">
+            <label className="block mb-2 text-sm font-medium text-[#000000]">
               Name
             </label>
             <input
@@ -69,12 +69,12 @@ const Contact = () => {
               name="name"
               value={formState.name}
               onChange={handleChange}
-              className="bg-[#9c5450] border border-[#c2ccaa] text-[#c2ccaa] text-sm rounded-lg w-full p-2.5"
+              className="bg-[#ffffff] border border-[#c2ccaa] text-[#c2ccaa] text-sm rounded-lg w-full p-2.5"
               required
             />
           </div>
           <div className="mb-6">
-            <label className="block mb-2 text-sm font-medium text-[#c2ccaa]">
+            <label className="block mb-2 text-sm font-medium text-[#000000]">
               Enter you Email
             </label>
             <input
@@ -82,12 +82,12 @@ const Contact = () => {
               name="email"
               value={formState.email}
               onChange={handleChange}
-              className="bg-[#9c5450] border border-[#c2ccaa] text-[#c2ccaa] text-sm rounded-lg w-full p-2.5"
+              className="bg-[#ffffff] border border-[#c2ccaa] text-[#c2ccaa] text-sm rounded-lg w-full p-2.5"
               required
             />
           </div>
           <div className="mb-6">
-            <label className="block mb-2 text-sm font-medium text-[#c2ccaa]">
+            <label className="block mb-2 text-sm font-medium text-[#000000]">
               Message
             </label>
             <textarea
@@ -95,7 +95,7 @@ const Contact = () => {
               value={formState.message}
               onChange={handleChange}
               rows={4}
-              className="bg-[#9c5450] border border-[#c2ccaa] text-[#c2ccaa] text-sm rounded-lg w-full p-2.5"
+              className="bg-[#ffffff] border border-[#c2ccaa] text-[#c2ccaa] text-sm rounded-lg w-full p-2.5"
               required
             ></textarea>
           </div>
@@ -118,7 +118,7 @@ const Contact = () => {
           </div> */}
           <motion.button
             type="submit"
-            className="bg-[#67C7EB] hover:bg-[#8cfcfb] text-[#582726] font-bold py-2 px-4 rounded-full"
+            className="bg-[#6A0C0B] text-[#ffffff] hover:bg-[#582726] hover:text-[#8cfcfb] font-bold py-2 px-4 rounded-full"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

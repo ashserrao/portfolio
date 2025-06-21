@@ -10,6 +10,7 @@ import Home from "./Components/home";
 import About from "./Components/about_me";
 import Skills from "./Components/skills";
 import Projects from "./Components/projects";
+import Experience from "./Components/experience";
 import Contact from "./Components/contact_me";
 
 const Portfolio = () => {
@@ -53,13 +54,13 @@ const Portfolio = () => {
 
   return (
     <div className="bg-[#000000] min-h-screen text-[#c2ccaa]">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-[#6A0C0B] to-[#AA0505] backdrop-blur-md">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#6A0C0B] backdrop-blur-md">
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-2xl font-bold text-[#67C7EB]"
+            className="text-2xl font-bold text-[#FFFFFF]"
           >
             Ashtro Dev
           </motion.div>
@@ -105,7 +106,7 @@ const Portfolio = () => {
                 key={section}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                className={`text-2xl capitalize ${
+                className={`text-2xl font-bold capitalize ${
                   activeSection === section
                     ? "text-[#8cfcfb]"
                     : "text-[#c2ccaa]"
@@ -132,6 +133,9 @@ const Portfolio = () => {
         <div id="my work">
           <Projects />
         </div>
+        {/* <div id="experience">
+          <Experience />
+        </div> */}
         <div id="let's talk">
           <Contact />
         </div>
@@ -186,7 +190,7 @@ const Portfolio = () => {
       </footer>
 
       <motion.div
-        className="fixed bottom-8 right-8 bg-[#8cfcfb] text-[#582726] rounded-full p-2 cursor-pointer"
+        className="fixed bottom-8 right-8 bg-[#6A0C0B] text-[#67C7EB] rounded-full p-2 cursor-pointer"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => scrollToSection("home")}
