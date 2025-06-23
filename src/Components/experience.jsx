@@ -1,104 +1,131 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Building2, Calendar, MapPin, Code, Rocket, Zap } from "lucide-react";
+
+const experiences = [
+  {
+    id: 1,
+    company: "TechNova Solutions",
+    role: "Senior Full Stack Developer",
+    duration: "2022 - Present",
+    location: "San Francisco, CA",
+    technologies: ["React", "Node.js", "AWS", "TypeScript", "GraphQL"],
+  },
+  {
+    id: 2,
+    company: "CyberCore Industries",
+    role: "Frontend Developer",
+    duration: "2020 - 2022",
+    location: "Austin, TX",
+    technologies: ["Vue.js", "React Native", "SCSS", "Firebase"],
+  },
+  {
+    id: 3,
+    company: "DataFlow Systems",
+    role: "Junior Software Engineer",
+    duration: "2019 - 2020",
+    location: "Seattle, WA",
+    technologies: ["Python", "Django", "PostgreSQL", "Docker"],
+  },
+  {
+    id: 4,
+    company: "StartupLab",
+    role: "Software Development Intern",
+    duration: "2018 - 2019",
+    location: "Remote",
+    technologies: ["JavaScript", "Express.js", "MongoDB", "Git"],
+  },
+];
 
 const Experience = () => {
   return (
-    <section
-      id="projects"
-      className="py-20 bg-gradient-to-b from-[#FFFFFF] to-[#8cfcfb] overflow-hidden"
-    >
-      <div className="container mx-auto px-4 sm:px-6">
-        <motion.h2
-          className="text-3xl sm:text-4xl font-bold mb-12 text-center text-[#000000]"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          Experience
-        </motion.h2>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+      {/* Animated background elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
 
-        <div className="w-full">
-          {/* TIMELINE CIRCLES */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-          >
-            <ol className="flex flex-col md:flex-row items-center w-full gap-6 md:gap-0">
-              {Array(3)
-                .fill(0)
-                .map((_, idx) => (
-                  <li
-                    key={idx}
-                    className="flex items-center w-full sm:hidden md:flex lg:flex text-[#6A0C0B] after:content-[''] after:flex-1 after:h-1 after:border-b after:border-[#6A0C0B] after:border-4 after:inline-block last:after:border-gray-100 dark:last:after:border-gray-700"
-                  >
-                    <span className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#6A0C0B] rounded-full shrink-0">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        height="24px"
-                        viewBox="0 -960 960 960"
-                        width="24px"
-                        fill="#e3e3e3"
-                      >
-                        <path
-                          stroke="#6A0C0B"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M120-80q-33 0-56.5-23.5T40-160v-440h80v440h680v80H120Zm160-160q-33 0-56.5-23.5T200-320v-440h200v-80q0-33 23.5-56.5T480-920h160q33 0 56.5 23.5T720-840v80h200v440q0 33-23.5 56.5T840-240H280Zm0-80h560v-360H280v360Zm200-440h160v-80H480v80ZM280-320v-360 360Z"
-                        />
-                      </svg>
-                    </span>
-                  </li>
-                ))}
-            </ol>
-          </motion.div>
+      <div className="relative z-10 container mx-auto px-4 py-16">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 mb-4">
+            <Zap className="w-8 h-8 text-cyan-400" />
+            <h1 className="text-5xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Work Experience
+            </h1>
+            <Rocket className="w-8 h-8 text-purple-400" />
+          </div>
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+            Journey through my professional development career, building
+            innovative solutions and leading technical excellence.
+          </p>
+        </div>
 
-          {/* EXPERIENCE TEXT */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <ol className="flex flex-col sm:flex-col  md:flex-row md:flex-row items-center justify-between mt-8 gap-8 mx-10">
-              <li className="flex flex-col items-center text-center px-4">
-                <span className="text-base sm:text-lg font-bold text-black">
-                  Examroom.AI
-                </span>
-                <span className="text-sm sm:text-base text-gray-900">
-                  Customer Support Executive
-                </span>
-                <span className="text-sm sm:text-base text-gray-900">
-                  Jun 2021 - Nov 2021
-                </span>
-              </li>
-              <li className="flex flex-col items-center text-center px-4">
-                <span className="text-base sm:text-lg font-bold text-black">
-                  Examroom.AI
-                </span>
-                <span className="text-sm sm:text-base text-gray-900">
-                  Quality-Analyst Operations
-                </span>
-                <span className="text-sm sm:text-base text-gray-900">
-                  Nov 2021 - Dec 2023
-                </span>
-              </li>
-              <li className="flex flex-col items-center text-center px-4">
-                <span className="text-base sm:text-lg font-bold text-black">
-                  Examroom.AI
-                </span>
-                <span className="text-sm sm:text-base text-gray-900">
-                  Associate Software Developer
-                </span>
-                <span className="text-sm sm:text-base text-gray-900">
-                  Jan 2024 - Present
-                </span>
-              </li>
-            </ol>
-          </motion.div>
+        {/* Experience Timeline */}
+        <div className="max-w-6xl mx-auto">
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 via-blue-400 to-purple-400"></div>
+
+            {experiences.map((exp, index) => (
+              <div key={exp.id} className="relative mb-12 last:mb-0">
+                {/* Timeline dot */}
+                <div className="absolute left-6 w-4 h-4 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full border-4 border-slate-900 shadow-lg shadow-cyan-400/50"></div>
+
+                {/* Experience Card */}
+                <div className="ml-20">
+                  <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm transition-all duration-500 hover:bg-slate-800/70 hover:border-cyan-400/50 hover:shadow-lg hover:shadow-cyan-400/20">
+                    <CardContent className="p-4">
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <Building2 className="w-4 h-4 text-cyan-400" />
+                            <h3 className="text-lg font-bold text-white">
+                              {exp.company}
+                            </h3>
+                          </div>
+                          <h4 className="text-base font-semibold text-cyan-400 mb-2">
+                            {exp.role}
+                          </h4>
+                          <div className="flex items-center gap-4 text-slate-400 text-sm mb-3">
+                            <div className="flex items-center gap-1">
+                              <Calendar className="w-3 h-3" />
+                              {exp.duration}
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <MapPin className="w-3 h-3" />
+                              {exp.location}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Technologies */}
+                      <div className="flex flex-wrap gap-2">
+                        {exp.technologies.map((tech) => (
+                          <Badge
+                            key={tech}
+                            variant="secondary"
+                            className="bg-slate-700 text-cyan-400 border-slate-600 hover:bg-slate-600 text-xs"
+                          >
+                            <Code className="w-2 h-2 mr-1" />
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

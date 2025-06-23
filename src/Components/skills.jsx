@@ -62,11 +62,11 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="py-20 bg-gradient-to-b from-[#FFFFFF] to-[#FFE6E6]"
+      className="py-20 bg-gradient-to-b from-[#FFFFFF] to-[#f38d8b]"
     >
       <div className="container mx-auto px-6">
         <motion.h2
-          className="text-4xl font-bold mb-12 text-center text-[#6A0C0B]"
+          className="text-4xl font-bold mb-12 text-center text-[#000000]"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}

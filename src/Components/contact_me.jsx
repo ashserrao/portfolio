@@ -42,16 +42,16 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-20 bg-gradient-to-b from-[#FFFFFF] to-[#FFE6E6]"
+      className="py-20 bg-gradient-to-b from-[#FFFFFF] to-[#f38d8b]"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 min-h-[70vh]">
         <motion.h2
           className="text-4xl font-bold mb-12 text-center text-[#000000]"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Contact Me
+          Write to me
         </motion.h2>
         <motion.form
           className="max-w-lg mx-auto"

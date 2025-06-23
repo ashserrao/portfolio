@@ -1,56 +1,38 @@
-// "use client";
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from "react-icons/fa"; // Importing from react-icons
+import { Menu, X } from "lucide-react";
+import { FaGithub, FaLinkedin, FaFacebook, FaInstagram } from "react-icons/fa";
+import { NavLink, Routes, Route, useLocation } from "react-router-dom";
 
-// Importing section components
+// Component imports
 import Home from "./Components/home";
 import About from "./Components/about_me";
 import Skills from "./Components/skills";
 import Projects from "./Components/projects";
-import Experience from "./Components/experience";
 import Contact from "./Components/contact_me";
+import ComingSoon from "./Components/coming_soon";
 
 const Portfolio = () => {
+  const location = useLocation();
   const [activeSection, setActiveSection] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const sections = ["home", "about me", "my skills", "my work", "let's talk"];
+  const sections = [
+    { name: "home", label: "home", url: "/home" },
+    { name: "about-me", label: "about me", url: "/about-me" },
+    { name: "skills", label: "my skills", url: "/skills" },
+    { name: "projects", label: "my work", url: "/projects" },
+    { name: "contact", label: "let's talk", url: "/contact" },
+    { name: "dev-res", label: "Dev Resources", url: "/dev-res" },
+  ];
 
+  // Sync active section with current path
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const activeSection = sections.find((section) => {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          return (
-            scrollPosition >= top - windowHeight / 2 &&
-            scrollPosition < top + height - windowHeight / 2
-          );
-        }
-        return false;
-      });
-      if (activeSection) {
-        setActiveSection(activeSection);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [sections]);
-
-  const scrollToSection = (section) => {
-    const el = document.getElementById(section);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+    const current = sections.find((s) => location.pathname.includes(s.name));
+    if (current) {
+      setActiveSection(current.name);
     }
-    setMenuOpen(false);
-  };
+  }, [location.pathname]);
 
   return (
     <div className="bg-[#000000] min-h-screen text-[#c2ccaa]">
@@ -62,25 +44,29 @@ const Portfolio = () => {
             transition={{ duration: 0.5 }}
             className="text-2xl font-bold text-[#FFFFFF]"
           >
-            Ashtro Dev
+            <NavLink to={"/home"}>Ashtro Dev</NavLink>
           </motion.div>
+
+          {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6">
             {sections.map((section) => (
-              <motion.button
-                key={section}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className={`capitalize ${
-                  activeSection === section
-                    ? "text-[#8cfcfb]"
-                    : "text-[#c2ccaa]"
-                } hover:text-[#67C7EB] transition-colors`}
-                onClick={() => scrollToSection(section)}
-              >
-                {section}
-              </motion.button>
+              <NavLink key={section.name} to={section.url}>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`capitalize font-semibold ${
+                    activeSection === section.name
+                      ? "text-[#8cfcfb]"
+                      : "text-[#c2ccaa]"
+                  } hover:text-[#67C7EB] transition-colors`}
+                >
+                  {section.label}
+                </motion.button>
+              </NavLink>
             ))}
           </div>
+
+          {/* Mobile Menu Icon */}
           <div className="md:hidden">
             <button onClick={() => setMenuOpen(!menuOpen)}>
               {menuOpen ? (
@@ -93,6 +79,7 @@ const Portfolio = () => {
         </nav>
       </header>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -102,51 +89,52 @@ const Portfolio = () => {
             className="fixed inset-0 z-40 bg-[#582726] bg-opacity-95 flex flex-col items-center justify-center space-y-6"
           >
             {sections.map((section) => (
-              <motion.button
-                key={section}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className={`text-2xl font-bold capitalize ${
-                  activeSection === section
-                    ? "text-[#8cfcfb]"
-                    : "text-[#c2ccaa]"
-                } hover:text-[#67C7EB] transition-colors`}
-                onClick={() => scrollToSection(section)}
+              <NavLink
+                key={section.name}
+                to={section.url}
+                onClick={() => {
+                  setActiveSection(section.name);
+                  setMenuOpen(false);
+                }}
               >
-                {section}
-              </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`text-2xl font-bold capitalize ${
+                    activeSection === section.name
+                      ? "text-[#8cfcfb]"
+                      : "text-[#c2ccaa]"
+                  } hover:text-[#67C7EB] transition-colors`}
+                >
+                  {section.label}
+                </motion.button>
+              </NavLink>
             ))}
           </motion.div>
         )}
       </AnimatePresence>
 
-      <main>
-        <div id="home">
-          <Home />
-        </div>
-        <div id="about me">
-          <About />
-        </div>
-        <div id="my skills">
-          <Skills />
-        </div>
-        <div id="my work">
-          <Projects />
-        </div>
-        {/* <div id="experience">
-          <Experience />
-        </div> */}
-        <div id="let's talk">
-          <Contact />
-        </div>
+      {/* Routes */}
+      <main className="pt-4">
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/about-me" element={<About />} />
+          <Route path="/skills" element={<Skills />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/dev-res" element={<ComingSoon />} />
+        </Routes>
       </main>
 
-      <footer className="bg-[#000000] text-[#c2ccaa] py-6">
-        <div className="container mx-auto px-6 text-center">
-          <p>&copy; 2024 Ashtro Dev. All rights reserved.</p>
-          <div className="flex justify-center space-x-6 mt-4">
+      {/* Footer */}
+      <footer className="bg-[#000000] text-[#c2ccaa]">
+        <div className="container flex flex-wrap justify-center items-center mx-auto px-6 text-center sm:py-2 md:pt-2 lg:pt-2">
+          <div className="mt-1">
+            &copy; 2024 Ashtro Dev. All rights reserved.
+          </div>
+          <div className="flex justify-center space-x-6 sm:mt-2 md:mt-2 md:ml-2 lg:mt-2 lg:ml-2">
             <motion.a
-              href="https://github.com/ashserrao" // Add GitHub link here
+              href="https://github.com/ashserrao"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
@@ -156,7 +144,7 @@ const Portfolio = () => {
               <FaGithub className="w-6 h-6" />
             </motion.a>
             <motion.a
-              href="linkedin.com" // Add LinkedIn link here
+              href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
@@ -166,7 +154,7 @@ const Portfolio = () => {
               <FaLinkedin className="w-6 h-6" />
             </motion.a>
             <motion.a
-              href="facebook.com" // Add Facebook link here
+              href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
@@ -176,7 +164,7 @@ const Portfolio = () => {
               <FaFacebook className="w-6 h-6" />
             </motion.a>
             <motion.a
-              href="instagram.com" // Add Instagram link here
+              href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
@@ -188,15 +176,6 @@ const Portfolio = () => {
           </div>
         </div>
       </footer>
-
-      <motion.div
-        className="fixed bottom-8 right-8 bg-[#6A0C0B] text-[#67C7EB] rounded-full p-2 cursor-pointer"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => scrollToSection("home")}
-      >
-        <ChevronDown className="w-6 h-6 transform rotate-180" />
-      </motion.div>
     </div>
   );
 };
